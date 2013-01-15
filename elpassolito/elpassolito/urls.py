@@ -1,12 +1,13 @@
+from __future__ import absolute_import
 from django.conf.urls import patterns, include, url
-import core.urls, account.urls
+import passwords.urls
 from django.contrib import admin
+
 admin.autodiscover()
 
 urlpatterns = patterns( '',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^account/', include(account.urls.urls())),
-    url(r'', include(core.urls.urls())),
+    url(r'', include(passwords.urls.urls())),
     url(r'^account/', include('social_auth.urls')),
 )
 

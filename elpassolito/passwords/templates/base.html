@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>El Passolito</title>
+
+    <link rel="icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/ico"/>
+
+    <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">
+    {% block extra_stylesheets %}{% endblock %}
+</head>
+
+<body>
+
+{% block content %}
+
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{{ STATIC_URL }}js/jquery-1.8.2.js"></script>
+    {% block extra_scripts %}{% endblock %}
+{% endblock %}
+
+</body>
+
+</html>
