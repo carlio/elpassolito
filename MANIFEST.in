@@ -1,0 +1,4 @@
+recursive-include elpassolito/*/templates *
+recursive-include elpassolito/*/static *
+recursive-include elpassolito/*/fixtures *
+
