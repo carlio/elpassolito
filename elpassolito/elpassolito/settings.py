@@ -58,9 +58,7 @@ TEMPLATE_DIRS = ()
 
 
 PROJECT_APPS = [
-    'core',
-    'account',
-    'pypackages',
+    'passwords',
 ]
 
 AUTHENTICATION_BACKENDS = (
