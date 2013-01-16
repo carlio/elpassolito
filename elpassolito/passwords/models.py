@@ -9,9 +9,9 @@ from passwords import passwords
 
 _SETS = {
     'digits': string.digits,
-    'lowercase_letters': string.ascii_lowercase,
-    'uppercase_letters': string.ascii_uppercase,
-    'letters': string.ascii_letters,
+    'lowercase_ascii_letters': string.ascii_lowercase,
+    'uppercase_ascii_letters': string.ascii_uppercase,
+    'ascii_letters': string.ascii_letters,
     'punctuation': string.punctuation
 }
 

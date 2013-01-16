@@ -1,10 +1,33 @@
+from __future__ import absolute_import
 from django.views.generic import FormView
 from django import forms
+from passwords.models import Preset
+from django.utils.translation import ugettext as _
 
-class PasswordGenerationForm(forms.Form):
-    pass
 
+SET_CHOICES = (
+    ('digits', _('Numbers')),
+    ('uppercase_ascii_letters', _('Capital letters (A-Z)')),
+    ('lowercase_ascii_letters', _('Lowercase letters (a-z)')),
+    ('ascii_letters', _('Letters (a-z, A-Z)')),
+    ('punctuation', _('Punctuation')),
+)
+
+
+class PasswordGenerationForm(forms.ModelForm):
+    class Meta:
+        model = Preset
+        exclude = ('created_by',)
+
+    sets = forms.ChoiceField(choices=SET_CHOICES,
+                             widget=forms.CheckboxSelectMultiple)
 
 class PasswordGenerationView(FormView):
     form_class = PasswordGenerationForm
     template_name = 'passwords/generate.html'
+
+    def get_initial(self):
+        return { 'min_length': 10,
+                 'max_length': 12,
+                 'repeats_allowed': True,
+                }
