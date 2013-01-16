@@ -18,12 +18,12 @@ _SETS = {
 
 class Preset(models.Model):
 
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, blank=True)
 
     created_by = models.ForeignKey(User)
     created_on = models.DateTimeField(auto_now_add=True)
 
-    allowed_characters = JSONField()
+    allowed_characters = JSONField(blank=True)
     repeats_allowed = models.BooleanField()
 
     min_length = models.IntegerField()

@@ -1,4 +1,5 @@
 from __future__ import absolute_import
+from django.core.urlresolvers import reverse
 from django.views.generic import FormView
 from django import forms
 from passwords.models import Preset
@@ -19,8 +20,8 @@ class PasswordGenerationForm(forms.ModelForm):
         model = Preset
         exclude = ('created_by',)
 
-    sets = forms.ChoiceField(choices=SET_CHOICES,
-                             widget=forms.CheckboxSelectMultiple)
+    sets = forms.MultipleChoiceField(choices=SET_CHOICES,
+                                     widget=forms.CheckboxSelectMultiple)
 
 class PasswordGenerationView(FormView):
     form_class = PasswordGenerationForm
@@ -31,3 +32,10 @@ class PasswordGenerationView(FormView):
                  'max_length': 12,
                  'repeats_allowed': True,
                 }
+
+    def form_valid(self, form):
+        preset = form.save(commit=False)
+        print preset.generate_password()
+
+    def get_success_url(self):
+        return reverse('passwords:generate')
