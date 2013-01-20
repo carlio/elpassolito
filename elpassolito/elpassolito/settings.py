@@ -163,6 +163,7 @@ STATIC_URL = '/media/static/'
 if 'SECRET_KEY' in os.environ:
     SECRET_KEY = os.environ['SECRET_KEY']
 else:
+    import sys
     sys.stderr.write("The required environment variable SECRET_KEY was not set")
     sys.exit(1)
 
