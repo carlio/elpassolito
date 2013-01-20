@@ -160,7 +160,11 @@ STATIC_URL = '/media/static/'
 
 
 # The rest of the settings come from the environment
-SECRET_KEY = os.environ['SECRET_KEY']
+if 'SECRET_KEY' in os.environ:
+    SECRET_KEY = os.environ['SECRET_KEY']
+else:
+    sys.stderr.write("The required environment variable SECRET_KEY was not set")
+    sys.exit(1)
 
 import dj_database_url
 if 'DATABASE_URL' in os.environ:
