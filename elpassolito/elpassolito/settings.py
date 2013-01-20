@@ -1,5 +1,6 @@
 import django.conf.global_settings as defaults
 import os
+import sys
 
 PROJECT_DIR = os.path.join(os.path.dirname(__file__), '../../')
 
@@ -163,7 +164,6 @@ STATIC_URL = '/media/static/'
 if 'SECRET_KEY' in os.environ:
     SECRET_KEY = os.environ['SECRET_KEY']
 else:
-    import sys
     sys.stderr.write("The required environment variable SECRET_KEY was not set")
     sys.exit(1)
 
@@ -203,8 +203,8 @@ if DEVELOP_MODE:
     # serve static content from the development server
     SERVE_MEDIA=True
 
-import sys
-if not DEVELOP_MODE or 'collectstatic' in sys.argv:     #(ok that's nasty but meh)
+
+if os.environ.get('USE_AWS', False):
     # serve static content from s3
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
