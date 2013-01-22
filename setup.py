@@ -70,6 +70,6 @@ setup( name='elpassolito',
        install_requires=_install_requires,
 
        scripts=[
-           'bin/run_web',
+           'scripts/run_web',
        ],
  )
