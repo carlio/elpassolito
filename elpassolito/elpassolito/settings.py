@@ -204,7 +204,7 @@ if DEVELOP_MODE:
     SERVE_MEDIA=True
 
 
-if os.environ.get('USE_AWS', False):
+if os.environ.get('USE_AWS', False) == 'True':
     # serve static content from s3
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
